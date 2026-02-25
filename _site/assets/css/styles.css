@@ -1,9 +1,9 @@
 :root{
-  --bg:#0f172a;
-  --text:#ffffff;
+  --bg:#ffffff;
+  --text:#0f172a;
   --muted:#475569;
-  --card:#0f172a;
-  --line:#0f172a;
+  --card:#ffffff;
+  --line:#e2e8f0;
   --brand:#2563eb;
   --brand2:#8b5cf6;
   --shadow: 0 16px 50px rgba(2,6,23,.10);
@@ -29,7 +29,7 @@ body{
 @media (max-width: 900px){ .grid2{grid-template-columns:1fr} .title{font-size:36px}}
 .profile{
   display:flex;gap:18px;align-items:stretch;
-  border-radius:16px;overflow:hidden;border:2px solid #dbeafe;
+  border-radius:16px;overflow:hidden;border:2px solid #0f172a;
 }
 .profile img{width:46%;object-fit:cover;display:block}
 .profile .bio{padding:16px}
