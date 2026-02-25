@@ -1,9 +1,9 @@
 :root{
-  --bg:#ffffff;
-  --text:#0f172a;
+  --bg:#0f172a;
+  --text:#ffffff;
   --muted:#475569;
-  --card:#ffffff;
-  --line:#e2e8f0;
+  --card:#0f172a;
+  --line:#0f172a;
   --brand:#2563eb;
   --brand2:#8b5cf6;
   --shadow: 0 16px 50px rgba(2,6,23,.10);
