@@ -8,11 +8,11 @@ title: "Somil Vasandani Dhanwani — CV & Repos"
     <div>
       <h1 class="title">Somil Vasandani Dhanwani</h1>
       <div class="subtitle">
-        <span class="prompt">></span> Estudiante DAM · Developer
+        <span class="prompt">></span> Multiplatform Application Developer (Student)
       </div>
     </div>
 
-    <nav class="nav">
+    <nav style="display:flex;gap:10px">
       <a class="btn" href="https://www.linkedin.com/in/somil-vasandani-dhanwani-00a8a73b2" target="_blank">LinkedIn</a>
       <a class="btn" href="https://github.com/somilvd" target="_blank">GitHub</a>
       <a class="btn" href="mailto:somilvasd@gmail.com">Email</a>
@@ -20,13 +20,15 @@ title: "Somil Vasandani Dhanwani — CV & Repos"
   </header>
 
   <section class="section">
-    <h2>Sobre mí</h2>
+    <h2>About me</h2>
     <div class="grid2">
       <div class="profile">
-        <img src="assets/img/perfil.jpg" alt="Foto de perfil">
+        <img src="assets/img/perfil.jpg" alt="Profile picture">
         <div class="bio">
           <p class="muted">
-            Actualmente estoy aprendiendo más sobre desarrollo de software y técnicas avanzadas de programación. Me apasiona la creación de aplicaciones eficientes y con buen diseño, tanto a nivel funcional como visual y me gustaría mejorar en la optimización de código.
+            I am currently improving my knowledge in software development and advanced programming techniques. 
+            I am passionate about building efficient and well-designed applications, both functionally and visually, 
+            and I aim to improve my code optimization skills.
           </p>
           <div class="pillrow">
             <span class="pill">Java</span>
@@ -38,37 +40,39 @@ title: "Somil Vasandani Dhanwani — CV & Repos"
       </div>
 
       <div>
-        <h3>Proyectos de clase</h3>
+        <h3>Class projects</h3>
         <ul class="muted">
-          <li>Sistema de gestión de usuarios</li>
+          <li>User management system</li>
         </ul>
 
-        <h3>Objetivo</h3>
+        <h3>Goal</h3>
         <p class="muted">
-          Busco prácticas para seguir aprendiendo y mejorar en el desarrollo de aplicaciones, especialmente en programación y gestión de bases de datos. Mi nivel de inglés es de B1. Me gustaría profundizar en backend con Java y adquirir más experiencia trabajando con bases de datos.
+          I am looking for an internship to continue learning and improving my skills in application development, 
+          especially in programming and database management. My English level is B1. I would like to deepen my 
+          knowledge in backend development with Java and gain more experience working with databases.
         </p>
       </div>
     </div>
   </section>
 
   <section class="section">
-    <h2>Proyectos destacados (topic: <code>showcase</code>)</h2>
+    <h2>Featured projects (topic: <code>showcase</code>)</h2>
     <div id="featured" class="cards"></div>
     <p class="muted">
-      Para que un repo salga aquí, añade el topic <b>showcase</b> en GitHub.
+      To display a repository here, add the <b>showcase</b> topic on GitHub.
     </p>
   </section>
 
   <section class="section">
-    <h2>Mis repositorios</h2>
+    <h2>My repositories</h2>
     <div class="toolbar">
-      <input id="q" class="input" placeholder="Buscar repositorios..." />
+      <input id="q" class="input" placeholder="Search repositories..." />
       <select id="sort" class="select">
-        <option value="updated">Ordenar: actividad reciente</option>
-        <option value="stars">Ordenar: estrellas</option>
-        <option value="name">Ordenar: nombre</option>
+        <option value="updated">Sort: recent activity</option>
+        <option value="stars">Sort: stars</option>
+        <option value="name">Sort: name</option>
       </select>
-      <button class="btn active" data-topic="all">Todos</button>
+      <button class="btn active" data-topic="all">All</button>
       <button class="btn" data-topic="showcase">showcase</button>
       <button class="btn" data-topic="web">web</button>
       <button class="btn" data-topic="backend">backend</button>
@@ -87,7 +91,7 @@ let activeTopic = "all";
 
 function formatDate(iso){
   const d = new Date(iso);
-  return d.toLocaleDateString("es-ES",{year:"numeric",month:"short",day:"2-digit"});
+  return d.toLocaleDateString("en-US",{year:"numeric",month:"short",day:"2-digit"});
 }
 
 function cardBorderByIndex(i){
@@ -112,7 +116,7 @@ function renderFeatured(repos){
   const featured = repos.filter(r=>r.topics.includes(FEATURED_TOPIC)).slice(0,6);
   const el = document.getElementById("featured");
 
-  el.innerHTML = featured.length ? "" : `<div class="muted">Aún no tienes repos con topic <b>${FEATURED_TOPIC}</b>.</div>`;
+  el.innerHTML = featured.length ? "" : `<div class="muted">No repositories with the <b>${FEATURED_TOPIC}</b> topic yet.</div>`;
 
   featured.forEach((r,i)=>{
     const topics = r.topics.slice(0,4).map(t=>`<span class="pill">${t}</span>`).join("");
@@ -120,7 +124,7 @@ function renderFeatured(repos){
     el.insertAdjacentHTML("beforeend",`
       <article class="card ${cardBorderByIndex(i)}">
         <h3>${r.name}</h3>
-        <div class="muted">${r.description || "Sin descripción"}</div>
+        <div class="muted">${r.description || "No description"}</div>
 
         <div class="pillrow">
           <span class="pill featured">Featured</span>
@@ -133,7 +137,7 @@ function renderFeatured(repos){
           <span>🕒 ${formatDate(r.updated_at)}</span>
         </div>
 
-        <a class="btn" href="${r.html_url}" target="_blank">Ver repo</a>
+        <a class="btn" href="${r.html_url}" target="_blank">View repo</a>
       </article>
     `);
   });
@@ -159,17 +163,17 @@ function renderRepos(repos){
   const el = document.getElementById("repos");
   const list = applyFilters(repos);
 
-  el.innerHTML = list.length ? "" : `<div class="muted">No hay resultados.</div>`;
+  el.innerHTML = list.length ? "" : `<div class="muted">No results found.</div>`;
 
   list.forEach((r,i)=>{
     const topics = r.topics.length
       ? r.topics.slice(0,6).map(t=>`<span class="pill">${t}</span>`).join("")
-      : `<span class="pill">sin topics</span>`;
+      : `<span class="pill">no topics</span>`;
 
     el.insertAdjacentHTML("beforeend",`
       <article class="card ${cardBorderByIndex(i)}">
         <h3>${r.name}</h3>
-        <div class="muted">${r.description || "Sin descripción"}</div>
+        <div class="muted">${r.description || "No description"}</div>
 
         <div class="pillrow">${topics}</div>
 
@@ -179,7 +183,7 @@ function renderRepos(repos){
           <span>🕒 ${formatDate(r.updated_at)}</span>
         </div>
 
-        <a class="btn" href="${r.html_url}" target="_blank">Abrir</a>
+        <a class="btn" href="${r.html_url}" target="_blank">Open</a>
       </article>
     `);
   });
